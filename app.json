@@ -1,0 +1,55 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/register/register",
+    "pages/MyThumbPager/MyThumbPager",
+    "pages/MyReleasePager/MyReleasePager",
+    "pages/MyMessagePager/MyMessagePger",
+    "pages/MyMinePager/MyMinePager"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#aaa",
+    "navigationBarTitleText": "myChat",
+    "navigationBarTextStyle":"black"
+  },
+   "tabBar": {
+    "backgroundColor": "#fbfbfb",
+    "borderStyle": "white",
+    "selectedColor": "#d81e06",
+    "color": "#aaa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_selected.png"
+      },
+      {
+        "text": "翻牌",
+        "pagePath": "pages/MyThumbPager/MyThumbPager",
+        "iconPath": "image/thumb.png",
+        "selectedIconPath": "image/thumb_selected.png"
+      },
+      {
+        "pagePath": "pages/MyReleasePager/MyReleasePager",
+        "text": "发布",
+        "iconPath": "image/release.png",
+        "selectedIconPath": "image/release_selected.png"
+      },
+      {
+        "pagePath": "pages/MyMessagePager/MyMessagePager",
+        "text": "消息",
+        "iconPath": "image/messages.png",
+        "selectedIconPath": "image/messages_selected.png"
+      },
+      {
+        "pagePath": "pages/MyMinePager/MyMinePager",
+        "text": "我的",
+        "iconPath": "image/mine.png",
+        "selectedIconPath": "image/mine_selected.png"
+      }
+    ]
+  }
+}
