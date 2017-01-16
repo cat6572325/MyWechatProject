@@ -6,7 +6,9 @@
     "pages/MyThumbPager/MyThumbPager",
     "pages/MyReleasePager/MyReleasePager",
     "pages/MyMessagePager/MyMessagePger",
-    "pages/MyMinePager/MyMinePager"
+    "pages/MyMinePager/MyMinePager",
+     "pages/New/New"
+   
   ],
   "window":{
     "backgroundTextStyle":"light",

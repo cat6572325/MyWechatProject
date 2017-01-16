@@ -1,5 +1,78 @@
-<view class="btn-area">
-  <navigator url="../logs" hover-class="navigator-hover">跳转到新页面</navigator>
-  <navigator url="redirect?title=redirect" open-type="redirect" hover-class="other-navigator-hover">在当前页打开</navigator>
-  <navigator url="index" open-type="switchTab" hover-class="other-navigator-hover">切换 Tab</navigator>
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="0" bindtap="swichNav">热门</view>
+  <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="1" bindtap="swichNav">逗比</view>
+  <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">猎奇</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="3" bindtap="swichNav">娱乐</view>
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="4" bindtap="swichNav">网红</view>
 </view>
+
+<!--分类显示区-->
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+
+  <!-- 第一个分类列表 -->
+  <swiper-item>
+
+    <!-- 列表 -->
+    <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+
+      <!-- 显示顶部刷新 -->
+      <view hidden="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+
+        <!-- 显示顶部刷新icon -->
+        <icon type="waiting" size="45" />
+
+        <!-- 不知道 -->
+        <text>
+          刷新中...
+        </text>
+      </view>
+
+      <!-- 顶部结束 -->
+
+     
+
+      <!-- 列表item -->
+      <view class="lll" wx:for="{{ListView}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
+
+        <!-- 列表item内容， -->
+          <video src="http://baobab.wdjcdn.com/14564977406580.mp4" style="width:100%; height:100%" >
+           </video>
+           <image style="width: 50px; height: 50px; vertical-align:middle" src="../../image/oval_7.png"></image>
+            <text class="title">标题</text>
+        
+          <text style="float:right;margin-top:15px" >标题</text>
+  
+
+        </view>
+      <view class="tips1">
+        <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+          <icon type="waiting" size="45" />
+          <text>
+            玩命的加载中...
+          </text>
+        </view>
+        <view wx:else>
+          <text>
+            没有更多内容了
+          </text>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- 第二个分类列表 -->
+  <swiper-item>
+    <view>我是呵呵</view>
+  </swiper-item>
+
+  <!-- 第三个分类列表 -->
+  <swiper-item>
+    <view>我是嘿嘿</view>
+  </swiper-item>
+  <swiper-item>
+    <view>我是嘿嘿</view>
+  </swiper-item>
+  <swiper-item>
+    <view>我是嘿嘿</view>
+  </swiper-item>
+</swiper>

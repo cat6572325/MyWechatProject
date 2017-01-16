@@ -1,0 +1,7 @@
+<scroll-view scroll-y="true" style="height:500px;"   bindscrolltolower="loadMore" bindscrolltoupper="refesh" upper-threshold="100" lower-threshold="300" bindscroll="scroll" scroll-top="100"  scroll-into-view="yellow">
+
+<view wx:for="{{ListView}}"wx:for-item="item" bindtap="bindViewTap" data-title="{{item.message}}"> 
+  <image src="../../image/a.png"></image>
+  <text hidden="{{isHide}}"> success</text>
+  </view>
+</scroll-view>
