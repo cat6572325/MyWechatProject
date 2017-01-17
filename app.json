@@ -7,7 +7,7 @@
     "pages/MyReleasePager/MyReleasePager",
     "pages/MyMessagePager/MyMessagePger",
     "pages/MyMinePager/MyMinePager",
-     "pages/New/New"
+"pages/New/New"
    
   ],
   "window":{

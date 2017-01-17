@@ -1,9 +1,9 @@
 <view class="swiper-tab">
-  <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="0" bindtap="swichNav">热门</view>
-  <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="1" bindtap="swichNav">逗比</view>
+  <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">热门</view>
+  <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">逗比</view>
   <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">猎奇</view>
-  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="3" bindtap="swichNav">娱乐</view>
-  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="4" bindtap="swichNav">网红</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">娱乐</view>
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">网红</view>
 </view>
 
 <!--分类显示区-->
@@ -16,7 +16,7 @@
     <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refesh">
 
       <!-- 显示顶部刷新 -->
-      <view hidden="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+      <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
 
         <!-- 显示顶部刷新icon -->
         <icon type="waiting" size="45" />
@@ -29,21 +29,17 @@
 
       <!-- 顶部结束 -->
 
-     
-
       <!-- 列表item -->
       <view class="lll" wx:for="{{ListView}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
 
-        <!-- 列表item内容， -->
-          <video src="http://baobab.wdjcdn.com/14564977406580.mp4" style="width:100%; height:100%" >
-           </video>
-           <image style="width: 50px; height: 50px; vertical-align:middle" src="../../image/oval_7.png"></image>
-            <text class="title">标题</text>
-        
-          <text style="float:right;margin-top:15px" >标题</text>
-  
-
-        </view>
+        <!-- 列表item内容，将视频的url做为id绑定，在js文件中获取这个key键对值 -->
+        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}"
+        style="width:100%;">
+        </video>
+        <image style="width: 50px; height: 50px; vertical-align:middle" src="../../image/oval_7.png"></image>
+        <text class="title">标题</text>
+        <text style="float:right;margin-top:15px">标题</text>
+      </view>
       <view class="tips1">
         <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
           <icon type="waiting" size="45" />

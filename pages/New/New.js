@@ -1,7 +1,8 @@
 Page({
+ 
   data:{
     // text:"这是一个页面"
-    ListView:[{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'},{message:'s'}],
+    ListView:[],
      dd:'',
      hidden:false,
      page: 1,
@@ -13,16 +14,19 @@ Page({
   },
   onLoad:function(options){
     var that = this;
-    var url = 'http://v.juhe.cn/weixin/query?key=f16af393a63364b729fd81ed9fdd4b7d&pno=1&ps=10';
-  
-     console.log(res);
+
     
   },
-  onReady:function(){
+   onReady:function(res){
     // 页面渲染完成
+    this.videoCon=  wx.createVideoContext('itemVideo'),
+    this.videoCon.play()
+    this.data.ListView: this.videoCon,
+    ListView[0].pause()
   },
   onShow:function(){
     // 页面显示
+
   },
   onHide:function(){
     // 页面隐藏
