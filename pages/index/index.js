@@ -4,7 +4,6 @@ var app = getApp()
 
 Page({
   data: {
-    VideoList: [],//每个视频的实例列表
     hasRefesh: false,//显示部刷新
     // 页面配置 
     hasMore: false,
@@ -12,22 +11,23 @@ Page({
     winHeight: 0,
     // tab切换  
     currentTab: 0,
-
-    ListView: [] //列表容器
-
+    channel: 'hot',
+    ListView: [], //列表容器
+    Listdobe: [],//列表容器
+    Listcurious: [],//列表容器 猎奇
+    Listentertainment: []//列表容器 娱乐
   },
   onLoad: function () {
     var that = this;
 
     // 获取系统信息 
     wx.getSystemInfo({
-      success: function (res)
-       {
+      success: function (res) {
         that.setData(
           {
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
+            winWidth: res.windowWidth,
+            winHeight: res.windowHeight
+          });
       }
     });
   },
@@ -40,7 +40,7 @@ Page({
 
     //this.videoCon=ListView[0].video ,
     // this.videoCon.play()
-var that=this
+    var that = this
     //this.data.VideoList.push( this.videoCon)
     wx.request({
       //TODO 网络请求，获取视频最新最热列表
@@ -55,12 +55,12 @@ var that=this
       },
       success: function (res) {
         //TODO 连接成功返回数据
-        console.log(res.data[0].video_url.vid_url)
+        console.log(res.data[0])
         hasRefesh: false
-         that.setData({
-        ListView:res.data
+        that.setData({
+          ListView: res.data
 
-         })
+        })
       },
       fail: function () {//TODO 连接失败 
         wx.showModal({
@@ -75,60 +75,72 @@ var that=this
       }
     })
   },
-  
-    // 滑动切换tab 
+
+  // 滑动切换tab 
   bindChange: function (e) {
     var that = this;
     that.setData({ currentTab: e.detail.current });
-  },
-  
-   //点击tab切换 
-  swichNav: function (e) {
-    var that = this;
-    if (this.data.currentTab
-     === e.target.dataset.current)
-      {
-      return false;
-    } else 
+    if(e.detail.current===0)
     {
-      that.setData(
-        {
-        currentTab: e.target.dataset.current
-      })
+      if(that.data.ListView.length<1)
+      {
+        that.refesh()
+      }
+    }
+    if(e.detail.current===1)
+    {
+          if(that.data.Listdobe.length<1)
+      {
+        that.refesh()
+        //console(that.data.Listdobe.length+'')
+      }
+    }
+    if(e.detail.current===2)
+    {
+         if(that.data.Listcurious.length<1)
+      {
+        that.refesh()
+      }
+    }
+    if(e.detail.current===3)
+    {
+         if(that.data.Listentertainment.length<1)
+      {
+        that.refesh()
+      }
     }
   },
 
+  //点击tab切换 
+  swichNav: function (e) {
+    var that = this;
+    if (this.data.currentTab
+      === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData(
+        {
+          currentTab: e.target.dataset.current
+        })
+    }
+  },
+  ///////////
+  moreClick: function()
+  {//更多点击
+    console.log('点击了更多')
+  },
   //加载更多
-  loadMore: function ()
-  {
+  loadMore: function () {
     var that = this;
     that.setData({
       hasMore: true,
     });
-  },
-
-  //刷新数据
-  refesh: function () {
-    var that=this;
-    that.setData({
-      hasRefesh: true,
-    }),
-    setTimeout(function(){
-         that.setData({
-  hasRefesh: false
-         })
-         wx.showToast({
-      title: '成功',
-      icon: 'success',
-      duration: 500
-    })
-},2000),
- 
-
-    //this.videoCon=ListView[0].video ,
-    // this.videoCon.play()
-
-    //this.data.VideoList.push( this.videoCon)
+    setTimeout(function () {
+      that.setData({
+        hasRefesh: false
+      })
+    }, 2000)
+    //TODO 网络请求，加载数据
     wx.request({
       //TODO 网络请求，获取视频最新最热列表
       url: 'http://tp.newteo.com/video/sort/new?channel=hot&per5&page=1', //仅为示例，并非真实的接口地址
@@ -143,10 +155,12 @@ var that=this
       success: function (res) {
         //TODO 连接成功返回数据
         console.log(res.data[0].video_url.vid_url)
-          that.setData({
-        ListView:res.data
-         })
-         
+        that.setData({
+          ListView: res.data
+
+        })
+
+
       },
       fail: function () {//TODO 连接失败 
         wx.showModal({
@@ -160,6 +174,138 @@ var that=this
         })
       }
     })
-    },
+
+
+
+  },
+  ///////////
+  //刷新数据
+  refesh: function () {
+    var that = this;
+    var tabnum = that.data.currentTab;
+    that.setData({
+      hasRefesh: true,
+    }),
+      setTimeout(function () {
+        that.setData({
+          hasRefesh: false
+        })
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+
+          duration: 500
+        })
+      }, 2000)
+    if (tabnum === 0) {//如果当前页面是 最热
+      that.setData
+        (
+        {
+          channel: 'hot'
+        }
+        )
+
+    }
+    if (tabnum === 1) {//如果是逗比
+      that.setData
+        (
+        {
+          channel: 'dobe'
+        }
+        )
+    }
+    if (tabnum === 2) {//如果是猎奇
+      that.setData
+        (
+        {
+          channel: 'curious'
+        }
+        )
+    }
+    if (tabnum === 3) {//如果是娱乐
+      that.setData
+        (
+        {
+          channel: 'entertainment'
+        }
+        )
+    }
+
+
+
+    wx.request({
+      //TODO 网络请求，获取视频最新最热列表
+      url: 'http://tp.newteo.com/video/sort/new?channel=' + that.data.channel + '&per5&page=1', //仅为示例，并非真实的接口地址
+      data: {
+        //TODO 要送的附加数据
+        x: '',
+        y: ''
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        //TODO 连接成功返回数据
+           if (tabnum === 0) {//如果当前页面是 最热
+      that.setData
+        (
+        {//如果是第一页
+       
+          ListView: res.data
+      
+        }
+        )
+
+    }
+    if (tabnum === 1) {//如果是逗比
+      that.setData
+        (
+        {
+          Listdobe: res.data
+              
+  
+        }
+        )
+             console.log('1')
+  
+    }
+    if (tabnum === 2) {//如果是猎奇
+      that.setData
+        (
+        {
+          Listcurious: res.data
+        }
+        )
+             console.log('2')
+  
+    }
+    if (tabnum === 3) {//如果是娱乐
+      that.setData
+        (
+        {
+          Listentertainment: res.data
+        }
+        )
+             console.log('3')
+  
+    }
+        
+
+
+      },
+
+      fail: function () {//TODO 连接失败 
+        wx.showModal({
+          title: '提示',
+          content: '网络连接失败',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            }
+          }
+        })
+      }
+    })
+  },
 
 }) 

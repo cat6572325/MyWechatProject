@@ -60,7 +60,20 @@
 .swiper-box view {
 
 }
-.title{
+.tab_nickname{
 text-align:center;
 vertical-align: middle;
+
+}
+.tab_title
+{
+  margin-left: 15px;
+  margin-right: 15px;
+    overflow:hidden;
+    font-size: 16pt;
+    
+}
+.viewClick
+{
+   background-color: #eee;
 }

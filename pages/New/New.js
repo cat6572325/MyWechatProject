@@ -21,8 +21,8 @@ Page({
     // 页面渲染完成
     this.videoCon=  wx.createVideoContext('itemVideo'),
     this.videoCon.play()
-    this.data.ListView: this.videoCon,
-    ListView[0].pause()
+   // this.data.ListView: this.videoCon,
+    //ListView[0].pause()
   },
   onShow:function(){
     // 页面显示

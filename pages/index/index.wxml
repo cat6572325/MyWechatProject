@@ -33,8 +33,68 @@
       <view class="lll" wx:for="{{ListView}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
 
         <!-- 列表item内容，将视频的url做为id绑定，在js文件中获取这个key键对值 -->
-        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}"
-        style="width:100%;">
+        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}" style="width:100%;">
+        </video>
+        <view style="margin: 13px;">
+          <text class="tab_title">天下之大，莫非王土</text>
+        </view>
+         <!--下方昵称那块那块 -->
+<view  style="margin-bottom:25px">
+     <image style="width: 50px; height: 50px; vertical-align:middle" src="../../image/oval_7.png"></image>
+        <text style="margin-top:15px">标题</text>
+        <view style="float: right;width: 25px;height:25px;vertical-align:middle;margin-top: 15px;float:right;" hover-class="viewClick" hover="true" bindtap="moreClick">
+        <image style="width: 4px;height:20px;float: right;margin-right:8px;margin-top:2px;vertical-align:middle"src="../../image/more_icon.png">
+        </image>
+        </view>
+        <view style="float: right;width: 25px;height:25px;vertical-align:middle;margin-top: 15px;float:right;" hover-class="viewClick" hover="true" bindtap="moreClick">
+        <image style="width: 18px;height:17.2px;float: right;margin-right:3px;margin-top:3px;vertical-align:middle"src="../../image/commemt_icon.png">
+        </image>
+        </view>
+</view>
+
+               <!--下方昵称那块那块 -->
+</view>
+      <view class="tips1">
+        <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+          <icon type="waiting" size="45" />
+          <text>
+            玩命的加载中...
+          </text>
+        </view>
+        <view wx:else>
+          <text>
+            没有更多内容了
+          </text>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- 第二个分类列表 -->
+  <swiper-item>
+
+    <!-- 列表 -->
+    <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+
+      <!-- 显示顶部刷新 -->
+      <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+
+        <!-- 显示顶部刷新icon -->
+        <icon type="waiting" size="45" />
+
+        <!-- 不知道 -->
+        <text>
+          刷新中...
+        </text>
+      </view>
+
+      <!-- 顶部结束 -->
+
+      <!-- 列表item -->
+      <view class="lll" wx:for="{{Listdobe}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
+
+        <!-- 列表item内容，将视频的url做为id绑定，在js文件中获取这个key键对值 -->
+        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}" style="width:100%;">
         </video>
         <image style="width: 50px; height: 50px; vertical-align:middle" src="../../image/oval_7.png"></image>
         <text class="title">标题</text>
@@ -54,11 +114,6 @@
         </view>
       </view>
     </scroll-view>
-  </swiper-item>
-
-  <!-- 第二个分类列表 -->
-  <swiper-item>
-    <view>我是呵呵</view>
   </swiper-item>
 
   <!-- 第三个分类列表 -->
