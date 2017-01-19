@@ -13,8 +13,14 @@
 
 .userinfo-nickname {
   color: #ccc;
+  
 }
-
+.avatar {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+float: left;
+}
 .usermotto {
   margin-top: 200px;
 }
@@ -76,4 +82,11 @@ vertical-align: middle;
 .viewClick
 {
    background-color: #eee;
+}
+.likes
+{
+  width: 18px;display: line-block;height:17.2px;float: right;
+  margin-right:3px;
+  margin-top:3px;
+  vertical-align:middle;
 }

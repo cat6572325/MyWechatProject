@@ -9,9 +9,11 @@ Page({
     hasMore: false,
     winWidth: 0,
     winHeight: 0,
+    like_s: true,
     // tab切换  
     currentTab: 0,
     channel: 'hot',
+    favorites: [],//我喜欢的视频所有id
     ListView: [], //列表容器
     Listdobe: [],//列表容器
     Listcurious: [],//列表容器 猎奇
@@ -38,10 +40,7 @@ Page({
       duration: 500
     })
 
-    //this.videoCon=ListView[0].video ,
-    // this.videoCon.play()
     var that = this
-    //this.data.VideoList.push( this.videoCon)
     wx.request({
       //TODO 网络请求，获取视频最新最热列表
       url: 'http://tp.newteo.com/video/sort/new?channel=hot&per5&page=1', //仅为示例，并非真实的接口地址
@@ -54,14 +53,16 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        //res为json，可以直接调用string
+
         //TODO 连接成功返回数据
         console.log(res.data[0])
         hasRefesh: false
         that.setData({
           ListView: res.data
-
         })
       },
+
       fail: function () {//TODO 连接失败 
         wx.showModal({
           title: '提示',
@@ -125,9 +126,35 @@ Page({
     }
   },
   ///////////
+  getLike: function () {//TODO 加载我喜欢的列表
+  //TODO 首先通过token获取个人所有like
+ // ，然后获取所有视频视频，然后遍历所有视频视频
+ // ，并加入 like 这个参数
+ // ，同时用includes查找favorites里面有无这个视频id
+ // ，有则true 将心图设置为有色的的
+ // ，false则设置为无色的
+    var token = wx.getStorageSync('token')
+    //从缓冲中获取token
+    var that = this
+    //获得类实例
+    wx.request({
+      url: api.api + `/user/favorite/get?&token=${token}`,
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          favorites: res.data.favorites.map((v) => {
+            return v._id//将我喜欢的视频id填写到数组
+          })
+        })
+      },
+    })
+  },
   moreClick: function()
   {//更多点击
     console.log('点击了更多')
+  },
+  likeClick: function(event)
+  {//添加喜欢点击
   },
   //加载更多
   loadMore: function () {
@@ -251,10 +278,15 @@ Page({
         (
         {//如果是第一页
        
-          ListView: res.data
+          ListView: res.data.map((v)=>
+          {
+              return Object.assign(v, { like: [] })//临时赋值为false
+          })
+         
       
         }
         )
+         console.log(res.data[0]);
 
     }
     if (tabnum === 1) {//如果是逗比

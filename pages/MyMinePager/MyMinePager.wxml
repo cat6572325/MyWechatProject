@@ -1,2 +1,3 @@
 <!--pages/MyMinePager/MyMinePager.wxml-->
-<text>pages/MyMinePager/MyMinePager.wxml</text>
+<view
+class="listItemStyle" wx:for="listView" wx:key="vid">{{index}}: {{item.message}} </view>

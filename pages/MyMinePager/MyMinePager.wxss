@@ -1,1 +1,6 @@
 /* pages/MyMinePager/MyMinePager.wxss */
+.listItemStyle
+{
+    height: 100px;
+    background-color: #f00
+}
