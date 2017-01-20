@@ -1,6 +1,32 @@
 /* pages/MyMinePager/MyMinePager.wxss */
-.listItemStyle
+.MinePagerItem
 {
-    height: 100px;
-    background-color: #f00
+    border-bottom: 1px solid red;
+}
+.inputStyle
+{
+    margin-left: 10px;
+    bottom:0;
+}
+.MineInputStyle
+{
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 15px; 
+    color: #aaa;
+    font-size: 13pt
+}
+.MinePager-Progress
+{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.MyData
+{
+    margin: 20px;
+}
+.radio-group
+{
+    right: 0;
+    margin: 10px
 }

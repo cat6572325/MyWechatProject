@@ -1,12 +1,14 @@
 {
   "pages":[
-    "pages/index/index",
+      "pages/index/index",
+    "pages/MyMinePager/MyMinePager",
+  
     "pages/logs/logs",
     "pages/register/register",
     "pages/MyThumbPager/MyThumbPager",
     "pages/MyReleasePager/MyReleasePager",
-    "pages/MyMessagePager/MyMessagePger",
-    "pages/MyMinePager/MyMinePager",
+    "pages/MyMessagePager/MyMessagePager",
+    
 "pages/New/New"
    
   ],

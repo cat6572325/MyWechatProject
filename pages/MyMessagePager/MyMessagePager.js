@@ -1,4 +1,4 @@
-// pages/MyMessagePager/MyMessagePger.js
+// pages/MyMessagePager/MyMessagePager.js
 Page({
   data:{},
   onLoad:function(options){

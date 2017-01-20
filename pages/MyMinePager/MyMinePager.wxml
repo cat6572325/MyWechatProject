@@ -1,3 +1,32 @@
 <!--pages/MyMinePager/MyMinePager.wxml-->
-<view
-class="listItemStyle" wx:for="listView" wx:key="vid">{{index}}: {{item.message}} </view>
+<view>
+
+<map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+<view class="MyData">资料修改</view>
+<progress class="MinePager-Progress" percent="20" show-info active />
+</view>
+<view  wx:for="{{MyList}}">
+
+<view class="MinePagerItem">
+
+<view  class="MineInputStyle">{{index}}: {{item.title}}</view>
+<!-- 通过index（即每条数据的索引)设置title -->
+
+
+  <input wx:if="{{item.input}}" class="inputStyle"  
+  bindconfirm="complite" placeholder-style="color:gray" placeholder="{{item.placeholder}}" />
+  <view wx:elif="{{item.redio}}" class="radio-group">
+  <radio-group  bindchange="radioChange">
+  <label class="radio" wx:for="{{items}}">
+    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+  </label>
+</radio-group>
+</view>
+<view style="height: 195px" wx:elif="{{item.isdata}}">
+<textarea maxlength="100"bindblur="bindTextAreaBlur" auto-height placeholder="央视最近曝光买卖人体器官猖獗，还真是。前些天下班看到路边一个卖草莓的小摊贩，看着不错，于是过去尝了一下，可当我尝到第27个的时候时候，摊贩铁青的脸说了一句 要脸吗？我听了立马拔腿就跑，真是世风日下啊，现在想起来我当初是不是应该先报警啊啊？"/>
+</view>
+<view wx:else >无内容</view>
+</view>
+<!--<view class="viewLine" ></view>-->
+<!-- 做为item的分割件-->
+</view>
