@@ -30,3 +30,35 @@
     right: 0;
     margin: 10px
 }
+.floating_action_view
+{
+
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border-bottom: 2px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  width: 40px;
+  height: 40px;
+   background-color: #fff;
+}
+.floating_action_image
+{
+
+  border-radius: 50%;
+
+  
+  width: 20px;
+  height: 20px;
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;  
+   background-color: #fff;
+}
+.float_action_button_click
+{
+     background-color: #cc3333;
+}

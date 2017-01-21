@@ -1,2 +1,23 @@
 <!--pages/MyReleasePager/MyReleasePager.wxml-->
-<text>pages/MyReleasePager/MyReleasePager.wxml</text>
+<modal class="modal" confirm-text="登陆"hidden="{{Mymodal}}" no-cancel bindconfirm="hide_modal" background-color="#ccc"bindcancel="cancel_modal">
+
+ <input 
+  class="phone_input_style" 
+  data-inputData="{{index}}" 
+  value='15913044423'
+  data-datatwo="aa"
+  maxlength="11"
+  bindinput="complit_phone" 
+  placeholder-style="color:gray"
+  placeholder="请输入账号" />
+ <input 
+  class="phone_input_style"
+  data-inputData="{{index}}" 
+  value='cat6572325'
+  data-datatwo="aa"
+  maxlength="30"
+  bindinput="complit_password" 
+  placeholder-style="color:gray"
+  placeholder="请输入密码" />
+
+</modal>

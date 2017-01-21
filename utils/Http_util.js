@@ -1,37 +1,5 @@
-//app.js
-App({
-  onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-  },
-  getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
-      })
-    }
-  },
-  globalData:{
-    userInfo:null
-  },
-  addListener: function(callback)
-  {
-this.callback = callback;
-  },
-  post_http: function(MyHashMap)
+
+function post_http(MyHashMap)
 {
     var Url=MyHashMap.url
     
@@ -43,7 +11,8 @@ this.callback = callback;
     var Url=MyHashMap.url;
     
     var Url=MyHashMap.url;
- 
+    var that=MyHashMap.that;
+
     
   wx.request({
       //TODO 网络请求，获取视频最新最热列表
@@ -56,14 +25,13 @@ this.callback = callback;
       success: function (res) {
         //TODO 连接成功返回数据
         console.log(res.data)
-
         try {
     wx.setStorageSync('token', res.data.token)
- if (this.callback != null) {
-   //将数据传出去
-      this.callback(res.data);
-    }
-   
+   Myr.setData(
+       {
+           Mymodal: false
+       }
+   )
 } catch (e) {    
 }
       },
@@ -81,5 +49,4 @@ this.callback = callback;
       }
     })
   }
-
-})
+  module.exports.post_http = post_http;

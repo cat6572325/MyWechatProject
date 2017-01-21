@@ -1,9 +1,14 @@
 // pages/MyMinePager/MyMinePager.js
+
+var api = require("../../utils/util.js")
 Page({
   data:{
+    
+    floating_anima: {},
+    hidemodal: true,
      items: [
-      {name: 'USA', value: '男'},
-      {name: 'CHN', value: '女', checked: 'true'},
+      {name: 'man', value: '男'},
+      {name: 'miss', value: '女', checked: 'true'},
     ],
     MyList: [
       {title: '目前记录的昵称为：\n你可以在下方直接修改'
@@ -50,7 +55,21 @@ Page({
       clickable: true
     }]
   },
-  
+   onShow: function(){
+
+    var animation = wx.createAnimation({
+      //悬浮按钮的动画
+      duration: 1000,
+        timingFunction: 'ease',
+    })
+    this.animation = animation
+    animation.scale(1,1).step()
+    this.setData({
+      animationData:animation.export()
+    })
+
+
+  },
   regionchange(e) {
     console.log(e.type)
   },
@@ -66,6 +85,50 @@ Page({
   complite: function(event)
   {//当某一个输入框有enter事件的时候
 //event.detail = {value: value}
-console.log(event.crrentTagt);//获取input的index值
+console.log(event.currentTarget.dataset.inputdata);//获取input的index值
+  },
+  login_out: function()
+  {
+    var animation = wx.createAnimation({
+      duration: 500,
+        timingFunction: 'ease',
+    })
+    this.animation = animation
+    animation.scale(0,2).step()
+    this.setData({
+      animationData:animation.export()
+    })
+
+    this.setData(
+      {
+        hidemodal: false//开启对话框
+      }
+    )
+  },
+  hide_modal: function()
+  {//点击退出登陆并隐藏对话框
+    console.log('点击了退出')
+this.setData(
+      {
+        hidemodal: true
+      }
+)
+  },
+  cancel_modal: function()
+  {//点击蒙层取消modal并重新显示floating_action_button
+    console.log('点击了蒙层');
+    var animation = wx.createAnimation({
+      duration: 500,
+        timingFunction: 'ease',
+    })
+    this.animation = animation
+    animation.scale(1,1).step()
+ 
+    this.setData(
+      {
+animationData:animation.export(),
+        hidemodal: true
+      }
+    )
   }
 })

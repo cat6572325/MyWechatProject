@@ -1,8 +1,8 @@
 {
   "pages":[
-      "pages/index/index",
-    "pages/MyMinePager/MyMinePager",
-  
+      "pages/MyMinePager/MyMinePager",
+   "pages/index/index",
+   
     "pages/logs/logs",
     "pages/register/register",
     "pages/MyThumbPager/MyThumbPager",

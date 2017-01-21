@@ -48,12 +48,12 @@
               <image style="width: 4px;height:20px;float: right;margin-right:8px;margin-top:2px;vertical-align:middle" src="../../image/more_icon.png">
               </image>
             </view>
-            <view style="float: right;width: 57px;height:25px;vertical-align:middle;float:right;margin-top: 10px;margin-bottom:20px" hover-class="viewClick" hover="true" bindtap="moreClick">
+            <view style="float: right;width: 65px;height:25px;vertical-align:middle;float:right;margin-top: 10px;margin-bottom:20px" hover-class="viewClick" hover="true" bindtap="moreClick">
               <text style="height:17.2px;float: right;margin-right:3px;margin-top:3px;">99+</text>
               <image style="width: 18px;display: line-block;height:17.2px;float: right;margin-right:3px;margin-top:3px;vertical-align:middle" src="../../image/commemt_icon.png">
               </image>
             </view>
-            <view style="float: right;width: 57px;height:25px;vertical-align:middle;margin-top: 10px;margin-right:5px;float:right;"
+            <view style="float: right;width: 65px;height:25px;vertical-align:middle;margin-top: 10px;margin-right:5px;float:right;"
              hover-class="viewClick" data-video-id="{{item._id}}" hover="true" bindtap="likeClick">
 <!-- 以视频的id做为唯一标示 -->
               <text style="height:17.2px;float: right;margin-right:3px;margin-top:3px">99+</text>
