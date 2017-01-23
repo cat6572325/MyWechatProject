@@ -1,4 +1,5 @@
 <!--pages/MyReleasePager/MyReleasePager.wxml-->
+<view>
 <modal class="modal" confirm-text="登陆"hidden="{{Mymodal}}" no-cancel bindconfirm="hide_modal" background-color="#ccc"bindcancel="cancel_modal">
 
  <input 
@@ -21,3 +22,11 @@
   placeholder="请输入密码" />
 
 </modal>
+<view style="margin: 10px; color: #0a0">片名:   </view>
+<view style=" margin: 10px;color: #0a0">地址:   </view>
+<view >
+    <video class="recording_style" src="{{src}}"></video>
+    <button bindtap="bindButtonTap">获取视频</button>
+</view>
+<view wx:for="{{comment}}"></view>
+</view>

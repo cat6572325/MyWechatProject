@@ -13,18 +13,45 @@ Page({
   },
   onReady:function(){
     // 页面渲染完成
-    console.log(user.myid)
-    if(user.myid===undefined)
+    
+
+  },
+  onShow:function(){
+    // 页面显示
+    var that= this;
+    try {
+    var value = wx.getStorageSync('token')
+    if(!value)
     {
       this.setData(
         {
           Mymodal: false
+
         }
       )
+    }else{
+           wx.chooseVideo({
+            sourceType: ['album','camera'],
+            maxDuration: 60,
+      camera: 'back',
+            success: function(res) {
+                that.setData({
+                    src: res.tempFilePath
+                })
+            }
+        })
     }
-  },
-  onShow:function(){
-    // 页面显示
+} catch (e) {  
+   wx.showModal({
+  title: '提示',
+  content: '失败',
+  success: function(res) {
+    if (res.confirm) {
+      console.log('用户点击确定')
+    }
+  }
+})
+}
   },
   onHide:function(){
     // 页面隐藏
@@ -41,25 +68,59 @@ Page({
    passwords=e.detail.value
   },
   hide_modal: function(e)
-  {//当点击确认按钮时调用http_util中的的post_http登陆
-      console.log('登陆按钮：'+e.dataset)
-       var MyHashMap= {
-         url: 'http://tp.newteo.com/login'
-       ,quantity: {phone: phones,password:passwords
-       }
-       }
-    app.post_http(MyHashMap);
-    this.changeData();
-  },
-  changeData: function()
-  {
-    app.addListener(function (changedData) {
-      console.log(changedData)
-      this.setData({
-        //添加监听，如果数据发生变化
-        Mymodal: true  //变量是是bool类型的
-      });
-    });
+  {//当点击确认按钮时  
+  var that = this;
+  wx.request({
+      //TODO 网络请求，获取视频最新最热列表
+      url: 'http://tp.newteo.com/login', //仅为示例，并非真实的接口地址
+      method: 'POST',
+      data: {phone: phones , password: passwords},
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        //TODO 连接成功返回数据
+         if(res.data.token!=null)
+        {
+               console.log(res.data)
+               wx.setStorageSync('token', res.data.token)
+               //保存token
+               that.setData(
+                 {
+                   Mymodal: true//隐藏登陆框
+                 }
+               )
+    
+        }else
+        {
+          wx.showModal({
+  title: '提示',
+  content: '登陆失败',
+  success: function(res) {
+    if (res.confirm) {
+      console.log('用户点击确定')
+    }
   }
+})
+        }
+       
+      },
+
+      fail: function () {//TODO 连接失败 
+        wx.showModal({
+          title: '提示',
+          content: '网络连接失败',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            }
+          }
+        })
+      }
+  })
+   
+  },
+  
+   
   
 })

@@ -1,0 +1,32 @@
+
+<!--pages/Run_Video_/Run_Video_.wxml-->
+<view class="comment_video_style">
+<view style="background-color: #aaa">
+  <video class="recording_style" src="{{src}}"></video>
+  <view class="video_title">
+  <text class="video_title_text">sss</text>
+  </view>
+  <view class="comment_video_icons_style" hover-class="viewClick" hover="true" >
+<image class="icons_style"src="../../image/likes.png"></image>
+<text>1000</text>
+</view>
+ <view class="comment_video_icons_style" hover-class="viewClick" hover="true" >
+<image class="icons_style"src="../../image/watched_icon.png">
+</image>
+<text>1000</text>
+</view>
+</view>
+</view>
+
+<view class="comment_list_style">
+<view  class="listView_style" wx:for="{{commentList}}">
+<view>
+<image class="comment_head_img_style" src="../../image/a.png"></image>
+</view>
+<view class="comment_text_style">
+<view style="float:left;margin-top: 40px">{{item.nickname}}</view>
+</view>
+</view>
+<input class="inputStyle" />
+
+</view>

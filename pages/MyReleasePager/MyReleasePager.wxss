@@ -7,3 +7,10 @@ color: red
 {
 
 }
+.recording_style
+{
+    width: 100%;
+    height: 200px;
+    margin-top: 3px;
+    float: right;
+}

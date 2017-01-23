@@ -1,6 +1,8 @@
 // pages/MyMinePager/MyMinePager.js
 
 var api = require("../../utils/util.js")
+var user = require("../../utils/Users.js")
+
 Page({
   data:{
     
@@ -12,9 +14,9 @@ Page({
     ],
     MyList: [
       {title: '目前记录的昵称为：\n你可以在下方直接修改'
-      ,input: '1',placeholder: '谭明'}
+      ,input: '1',placeholder: wx.getStorageSync('nickname')}
     ,{title: '目前记录的手机为：\n你可以在下方直接修改'
-    ,input: '59',placeholder: '15913044423'}
+    ,input: '59',placeholder: user.phone}
     ,{title: '目前记录的性别为：\n你可以在下方直接修改'
     ,redio: '1'}
     
@@ -111,8 +113,14 @@ console.log(event.currentTarget.dataset.inputdata);//获取input的index值
 this.setData(
       {
         hidemodal: true
+        
       }
 )
+try {
+  wx.removeStorageSync('token')
+} catch (e) {
+  // Do something when catch error
+}
   },
   cancel_modal: function()
   {//点击蒙层取消modal并重新显示floating_action_button

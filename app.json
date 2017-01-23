@@ -1,24 +1,24 @@
 {
-  "pages":[
-      "pages/MyMinePager/MyMinePager",
-   "pages/index/index",
-   
+  "pages": [
+"pages/index/index",
+    "pages/Run_Video_/Run_Video_",
+    
+    
+    "pages/MyReleasePager/MyReleasePager",
+    "pages/MyMinePager/MyMinePager",
     "pages/logs/logs",
     "pages/register/register",
     "pages/MyThumbPager/MyThumbPager",
-    "pages/MyReleasePager/MyReleasePager",
     "pages/MyMessagePager/MyMessagePager",
-    
-"pages/New/New"
-   
+    "pages/New/New"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#aaa",
     "navigationBarTitleText": "myChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-   "tabBar": {
+  "tabBar": {
     "backgroundColor": "#fbfbfb",
     "borderStyle": "white",
     "selectedColor": "#d81e06",

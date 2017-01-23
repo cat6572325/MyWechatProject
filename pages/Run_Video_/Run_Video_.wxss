@@ -1,0 +1,77 @@
+/* pages/Run_Video_/Run_Video_.wxss */
+.recording_style
+{
+     width: 100%;
+    height: 200px;
+    float: right;
+}
+.inputStyle
+{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: #aaa;
+    color: #fff
+    
+}
+.comment_list_style
+{
+    float: left;
+    margin-top: 250px;
+    margin-bottom: 70px;
+    width: 100%;
+
+}
+.comment_head_img_style
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+    float: left;
+}
+.comment_text_style
+{
+     background-color:#eee;
+        height:100px
+}
+.comment_video_style
+{
+    position: fixed;
+    width: 100%;
+}
+.listView_style
+{
+    margin-top: 20px
+
+}
+
+.icons_style
+{
+    width:18px;
+    height: 18px;
+}
+.comment_video_icons_style
+{
+    width:20%;
+    vertical-align:middle;
+    float:right;
+    margin-top: 10px;
+}
+.viewClick
+{
+   background-color: #eee;
+}
+.video_title
+{
+    float: left;
+    background-color: #aaa;
+    width: 50%;
+    height: 35px;
+}
+.video_title_text
+{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #fff;
+}
