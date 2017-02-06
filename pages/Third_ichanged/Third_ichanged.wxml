@@ -1,0 +1,31 @@
+<view>
+<view class="item_style"wx:for="{{lists}}" hover-class="float_action_button_click" 
+hover="true" bindtap="item_click" data-message="{{item.nickname}}" data-title="{{item.title}}">
+<!--    零番    -->
+<view wx:if="{{item.iswho==0}}">
+<image class="right_img_style"src="../../image/arrowright.png"></image>
+<image class="head_style"src="{{item.nickname}}"></image>
+</view>
+
+<!--    一番    -->
+<view wx:if="{{item.iswho==1}}" >
+<text class="left_text_title_style">{{item.title}}</text>
+<text class="left_text_style">{{item.nickname}}</text>
+<image class="right_img_style"src="../../image/arrowright.png"></image>
+</view>
+<!--    二番    -->
+<view wx:if="{{item.iswho==2}}">
+
+</view>
+<!--    ここわ終わりです    -->
+</view>
+ <modal class="modal" confirm-text="确认" title="{{modalTitle}}" hidden="{{Mymodal}}" no-cancel bindconfirm="Hide_modal" background-color="#ccc" bindcancel="cancel_modal">
+
+   <radio-group class="radio-group" bindchange="sexChange" wx:if="{{sex}}">
+  <label class="radio" wx:for="{{sexs}}">
+    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+  </label>
+</radio-group>
+<input class="phone_input_style"  data-datatwo="aa" maxlength="11" bindinput="input_method" placeholder-style="color:gray" placeholder="{{inputData}}" wx:if="{{input}}"/>
+  </modal>
+</view>

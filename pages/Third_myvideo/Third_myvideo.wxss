@@ -1,0 +1,34 @@
+.cover_style
+{
+    width:100%;
+    height: 170px;
+    
+}
+.icon_style
+{
+    width: 24px;
+    height: 13px;
+    float: left;
+margin-left: 10px;
+margin-top: 7px;
+margin-bottom: 50px;
+}
+.title_style
+{
+    float: right;
+margin-right: 10px;
+margin-top: 5px;
+}
+.hot_style
+{
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+}
+.noData_style
+{
+    margin: 60px;
+    float: left;
+    color: #ccc;
+}

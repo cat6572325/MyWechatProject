@@ -1,0 +1,13 @@
+<view class="item_style" wx:for="{{lists}}">
+<view wx:if="{{item.iswho!=1}}">
+<video class="cover_style"src="{{item.video_url.vid_url}}"></video>
+<view class="bottom_style">
+<image class="icon_style"src="../../image/watched_icon.png"></image>
+<text class="title_style">{{item.title}}</text>
+<text class="hot_style">{{item.view_number}}</text>
+</view>
+</view>
+<view wx:else>
+<text class="noData_style">没有其他内容</text>
+</view>
+</view>

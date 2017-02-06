@@ -1,16 +1,22 @@
 {
   "pages": [
-"pages/index/index",
-    "pages/Run_Video_/Run_Video_",
-    
-    
-    "pages/MyReleasePager/MyReleasePager",
     "pages/MyMinePager/MyMinePager",
+    
+"pages/Third_ichanged/Third_ichanged",
+    "pages/index/index",    
+    "pages/Third_myfollow/Third_myfollow",
+    "pages/Third_myvideo/Third_myvideo",
+    
+    "pages/Third_favorite/Third_favorite",    
+    "pages/Third_history/Third_history",
+    "pages/Third_myfan/Third_myfan",
+    
+    "pages/Run_Video_/Run_Video_",
+    "pages/MyReleasePager/MyReleasePager",
     "pages/logs/logs",
     "pages/register/register",
     "pages/MyThumbPager/MyThumbPager",
-    "pages/MyMessagePager/MyMessagePager",
-    "pages/New/New"
+    "pages/MyMessagePager/MyMessagePager"
   ],
   "window": {
     "backgroundTextStyle": "light",

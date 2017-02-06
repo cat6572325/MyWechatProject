@@ -62,3 +62,116 @@
 {
      background-color: #cc3333;
 }
+.Mine_fragment_style
+{
+width:100%;
+height:auto;
+display: inline-block;
+    text-align: center;
+
+}
+
+.icon_style
+{
+    
+    width:26px;
+    height: 27px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 7px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+   
+}
+.icon_Especially_style
+{
+      width:30px;
+    height: 16px;
+    float: left;
+    margin: 10px;
+}
+.icon_Especially_wall_style
+{
+    width:100%;
+    height: 500pc;
+    margin: 0 auto;
+    background:url(../../image/a.png);
+background-repeat:no-repeat;
+background-size:100% 230px;
+-webkit-background-origin:content-box; 
+background-origin:content-box;
+}
+.title_style
+{
+    float:left;
+    margin-top: 8px;
+
+}
+.wall_img_style
+{
+      background:url(../../image/wallpage.png);
+background-repeat:no-repeat;
+background-size:100% auto;
+-webkit-background-origin:content-box; 
+background-origin:content-box;
+width: 100%;
+}
+.wall_nickname_style
+{
+    position: absolute;
+  top: 66px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+.wall_head_style
+{
+position: absolute;
+  top: 88px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+
+}
+.wall_sex_style
+{
+  top: 55px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+}
+.nickname_text_style
+{
+    margin-left: 25px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.icon_goto_style
+{
+ width:26px;
+    height: 27px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 7px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.iswho3_style
+{
+    display: inline-block;
+    width: 33.25%;
+    height: 50px;
+    
+}
+.iswho3_text_style
+{
+margin: 18px;
+float: left;
+}

@@ -1,85 +1,52 @@
 <!--pages/MyMinePager/MyMinePager.wxml-->
-<view>
+<!--view item集 -->
+<view class="Mine_fragment_style" wx:for="{{MyList}}"
+wx:key="{{index}}">
+<view hover-class="float_action_button_click" 
+hover="true"bindtap="item_click"wx:if="{{item.iswho==1}}">
+<image  class="icon_style" src="{{item.icon}}"/>
+<text class="title_style" data-title="{{item.title}}">{{item.title}}</text>
+<image class="icon_goto_style"src="../../image/arrowright.png"></image>
+</view>
+<view wx:elif="{{item.iswho==2}}"bindtap="item_click">
+<image class="icon_Especially_style" src="{{item.icon}}"/>
+<text class="title_style"data-title="{{item.title}}">{{item.title}}</text>
+<image class="icon_goto_style"src="../../image/arrowright.png"></image>
+</view>
+<block wx:elif="{{item.iswho==3}}" class="icon_Especially_wall_style">
 
-<map id="map" 
-  longitude="113.324520"
-  latitude="23.099994" 
-  scale="14" 
-  controls="{{controls}}"
-  bindcontroltap="controltap"
-  markers="{{markers}}"
-  bindmarkertap="markertap"
-  polyline="{{polyline}}" 
-  bindregionchange="regionchange" 
-  show-location 
-  style="width: 100%; height: 300px;">
-</map>
+<image class="wall_img_style"/>
+<image class="wall_head_style"
+ src="{{head_pic}}" bindtap="changeMyData"></image>
+<view class="wall_nickname_style">
+<text class="nickname_text_style">{{nickname}}</text>
+<image class="wall_sex_style"
+ src="../../image/sex.png"></image>
 
-<view 
-class="MyData">
-资料修改
+</view>
+</block>
+<block wx:elif="{{item.iswho==4}}" class="icon_Especially_wall_style">
+<view >
+<view class="iswho3_style" bindtap="toMyVideo"hover-class="float_action_button_click" 
+hover="true">
+<text class="iswho3_text_style">我的视频</text>
 </view>
 
-<progress
- class="MinePager-Progress"
-  percent="20" 
-  show-info active />
+<view class="iswho3_style"hover-class="float_action_button_click" 
+hover="true" bindtap="toMyFollow">
+<text class="iswho3_text_style">我的关注</text>
 </view>
 
-<view  wx:for="{{MyList}}">
-
-<view class="MinePagerItem">
-
-<view 
- class="MineInputStyle">
- {{index}}: {{item.title}}
- </view>
-
-<!-- 通过index（即每条数据的索引)设置title -->
-  <input 
-  wx:if="{{item.input}}" 
-  class="inputStyle" 
-  data-inputData="{{index}}" 
-  data-datatwo="aa"
-  bindconfirm="complite" 
-  placeholder-style="color:gray"
-  placeholder="{{item.placeholder}}" />
-
-  <view 
-  wx:elif="{{item.redio}}"
-   class="radio-group">
-
-  <radio-group  
-  bindchange="radioChange">
-
-  <label 
-  class="radio" 
-  wx:for="{{items}}">
-
-    <radio 
-    value="{{item.name}}"
-     checked="{{item.checked}}"/>
-     {{item.value}}
-  </label>
-</radio-group>
-</view>
-
-<view 
-style="height: 210px"
- wx:elif="{{item.isdata}}">
-
-<textarea 
-style="width: 100%"
-maxlength="100"  
-bindblur="bindTextAreaBlur" 
-auto-height
- placeholder="央视最近曝光买卖人体器官猖獗，还真是。前些天下班看到路边一个卖草莓的小摊贩，看着不错，于是过去尝了一下，可当我尝到第27个的时候，摊贩铁青的脸说了一句 要脸吗？我听了立马拔腿就跑，真是世风日下啊，现在想起来我当初是不是应该先报警啊啊？"/>
-</view>
-
-<view wx:else >无内容</view>
+<view class="iswho3_style"hover-class="float_action_button_click" 
+hover="true" bindtap="toMyFan">
+<text class="iswho3_text_style">我的粉丝</text>
 </view>
 </view>
+</block>
 
+
+</view>
+<!--view item集 -->
 <view 
 animation="{{animationData}}" 
 class="floating_action_view"

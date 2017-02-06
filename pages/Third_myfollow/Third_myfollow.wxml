@@ -1,0 +1,20 @@
+<view>
+<view class="item_style" wx:for="{{lists}}">
+<view wx:if="{{item.iswho!=1}}">
+<image class="img_style" src="{{item.cover.cover_url}}" ></image>
+
+<view class="right_title_style">{{item.title}}</view>
+<!-- 下方文字部分 -->
+<view>
+<text class="right_nickname_style">{{item.poster.nickname}}</text>
+<text class="right_time_style">时间</text>
+</view>
+
+
+</view>
+<view wx:else>
+<text class="noData_style">没有其他内容</text>
+</view>
+</view>
+<view class="nodata_style"wx:if="{{lists.length<1}}">无内容</view>
+</view>

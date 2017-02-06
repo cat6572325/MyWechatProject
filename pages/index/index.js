@@ -191,13 +191,13 @@ Page({
     var vid=event.currentTarget.dataset.id
     console.log(vid)
     wx.navigateTo({
-      url: '../Run_Video_/Run_Video_?cids='+this.data.ListView.comments+'&vid'+vid//需要通过vid找寻listview集中的对应item，然后将该item所包含的comments发送过去第二页面
+      url: '../Run_Video_/Run_Video_?vid='+vid//需要通过vid找寻listview集中的对应item，然后将该item所包含的comments发送过去第二页面
     })
   },
   moreClick: function () {//更多点击
     console.log('点击了更多')
   },
-  likeClick: function (event) {
+  likeClick: function (event) {//点击了心形
     var that=this
     var vid = event.currentTarget.dataset.id
     console.log('vid'+vid)
@@ -207,6 +207,7 @@ Page({
 
       //TODO 网络请求，获取视频最新最热列表
       url: mUrl, //仅为示例，并非真实的接口地址
+      method: "POST",
       data: {
         //TODO 要送的附加数据
         x: '',
@@ -518,5 +519,8 @@ Page({
       }
     })
   },
+startPlay: function(v)
+{//TODO 增加播放历史
 
+}
 }) 

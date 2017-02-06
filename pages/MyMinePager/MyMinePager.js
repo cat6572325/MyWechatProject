@@ -3,27 +3,48 @@
 var api = require("../../utils/util.js")
 var user = require("../../utils/Users.js")
 
+var app=getApp();
 Page({
   data:{
     
+    head_pic:''
+    ,nickname:'',
     floating_anima: {},
     hidemodal: true,
+    avatarUrl:'',
      items: [
       {name: 'man', value: '男'},
       {name: 'miss', value: '女', checked: 'true'},
     ],
     MyList: [
-      {title: '目前记录的昵称为：\n你可以在下方直接修改'
-      ,input: '1',placeholder: wx.getStorageSync('nickname')}
-    ,{title: '目前记录的手机为：\n你可以在下方直接修改'
-    ,input: '59',placeholder: user.phone}
-    ,{title: '目前记录的性别为：\n你可以在下方直接修改'
-    ,redio: '1'}
+      {
+        wall:'../../image/a.png'
+        
+        ,iswho: '3'
+      },
+      {
+        iswho: '4'
+      },
+      {title: '我的订阅'
+      ,icon: ' ../../image/subscription.png'
+      ,iswho:'1'}
+    ,{title:'我喜欢的'
+    ,icon: ' ../../image/likes.png'
+    ,iswho:'1'}
+    ,{title: '播放历史'
+    ,icon: ' ../../image/watched_icon.png'
+    ,iswho:'2'}
     
-    ,{title: '目前记录的资金为：\n你可以在下方直接修改'
-    ,input: '1',placeholder: '$20'}
-    ,{title: '目前记录的个人签名为：\n你可以在下方直接修改'
-    ,isdata: '1'}
+    ,{title: '兴趣选择'
+    ,icon: ' ../../image/select.png'
+    ,iswho:'1'}
+    ,{title: '反馈'
+    ,icon: ' ../../image/feedback.png'
+    ,iswho:'1'}
+    ,{title: '版本检测'
+    ,icon: ' ../../image/mobile.png'
+    ,iswho:'1'}
+
     ],
    markers: [{
       iconPath: "../../image/a.png",
@@ -69,8 +90,14 @@ Page({
     this.setData({
       animationData:animation.export()
     })
-
-
+ var that = this
+    //调用应用实例的方法获取全局数据
+    var list=wx.getStorageSync('myData')
+  that.setData({
+    head_pic: list.head_pic,
+    nickname:list.nickname,
+  })
+      
   },
   regionchange(e) {
     console.log(e.type)
@@ -98,12 +125,13 @@ console.log(event.currentTarget.dataset.inputdata);//获取input的index值
     this.animation = animation
     animation.scale(0,2).step()
     this.setData({
-      animationData:animation.export()
+      animationData:animation.export(),
     })
 
     this.setData(
       {
         hidemodal: false//开启对话框
+        
       }
     )
   },
@@ -112,9 +140,12 @@ console.log(event.currentTarget.dataset.inputdata);//获取input的index值
     console.log('点击了退出')
 this.setData(
       {
-        hidemodal: true
-        
+        hidemodal: true,
+      userInfo:{},
+        headurl:'',
+        nickname:''
       }
+      
 )
 try {
   wx.removeStorageSync('token')
@@ -138,5 +169,65 @@ animationData:animation.export(),
         hidemodal: true
       }
     )
+  },
+  item_click: function(v)
+  {
+    var titles=v.target.dataset.title;
+    if(titles==='我的订阅')
+    {
+      console.log(v.currentTarget)
+    }
+    if(titles=='我喜欢的')
+    {
+      wx.navigateTo({
+        url: '../Third_favorite/Third_favorite',
+        success: function(res){
+        },
+        fail: function() {
+        },
+        complete: function() {
+        }
+      })
+    }
+
+    
+      if(titles=='播放历史')
+    {
+      wx.navigateTo({
+  url: '../Third_history/Third_history'
+})
+    }
+      if(titles=='兴趣选择')
+    {
+      console.log(v.target.dataset.title)
+    }
+      if(titles=='反馈')
+    {
+      console.log(v.target.dataset.title)
+    }
+    if(titles==='版本检测')
+    {
+      console.log(v.target.dataset.title)
+    }
+    if(titles==='预留')
+    {
+      console.log(v.target.index)
+    }
+  },
+  toMyVideo: function(v)
+  {//TODO  跳往我的视频界面
+  wx.navigateTo({url: '../Third_myvideo/Third_myvideo'})
+  },
+  toMyFollow: function(v)
+  {//TODO  跳往我的关注界面
+wx.navigateTo({url: '../Third_myfollow/Third_myfollow'})
+  },
+  toMyFan: function(v)
+  {//TODO  跳往我的粉丝界面
+wx.navigateTo({url: '../Third_myfan/Third_myfan'})
+  },
+  changeMyData:function(v)
+  {//TODO  跳往修改信息界面
+wx.navigateTo({url: '../Third_ichanged/Third_ichanged'})
   }
 })

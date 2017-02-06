@@ -1,32 +1,17 @@
+
 <!--pages/MyReleasePager/MyReleasePager.wxml-->
 <view>
-<modal class="modal" confirm-text="登陆"hidden="{{Mymodal}}" no-cancel bindconfirm="hide_modal" background-color="#ccc"bindcancel="cancel_modal">
-
- <input 
-  class="phone_input_style" 
-  data-inputData="{{index}}" 
-  value='15913044423'
-  data-datatwo="aa"
-  maxlength="11"
-  bindinput="complit_phone" 
-  placeholder-style="color:gray"
-  placeholder="请输入账号" />
- <input 
-  class="phone_input_style"
-  data-inputData="{{index}}" 
-  value='cat6572325'
-  data-datatwo="aa"
-  maxlength="30"
-  bindinput="complit_password" 
-  placeholder-style="color:gray"
-  placeholder="请输入密码" />
-
-</modal>
-<view style="margin: 10px; color: #0a0">片名:   </view>
-<view style=" margin: 10px;color: #0a0">地址:   </view>
-<view >
+  <modal class="modal" confirm-text="登陆" hidden="{{Mymodal}}" no-cancel bindconfirm="hide_modal" background-color="#ccc" bindcancel="cancel_modal">
+    <input class="phone_input_style" data-inputData="{{index}}" value='15913044423' data-datatwo="aa" maxlength="11" bindinput="complit_phone" placeholder-style="color:gray" placeholder="请输入账号" />
+    <input class="phone_input_style" data-inputData="{{index}}" value='cat6572325' data-datatwo="aa" maxlength="30" bindinput="complit_password" placeholder-style="color:gray" placeholder="请输入密码" />
+  </modal>
+  <modal class="modal" confirm-text="上传" hidden="{{readyUpload}}" no-cancel="{{nocancel}}" cancel-text="取消" bindconfirm="uploadvideo" background-color="#ccc" bindcancel="cancel_upload">
+    <input class="phone_input_style" data-inputData="{{index}}" data-datatwo="aa" maxlength="11" bindinput="complit_video_title" placeholder-style="color:gray" placeholder="请输入标题" />
+  </modal>
+  <view style="margin: 10px; color: #0a0">{{src}}</view>
+  <view>
     <video class="recording_style" src="{{src}}"></video>
-    <button bindtap="bindButtonTap">获取视频</button>
-</view>
-<view wx:for="{{comment}}"></view>
+    <button bindtap="uploadvideo_button">上传</button>
+  </view>
+  <view wx:for="{{comment}}"></view>
 </view>

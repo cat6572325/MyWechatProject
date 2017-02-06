@@ -33,7 +33,7 @@
       <view class="lll" wx:for="{{ListView}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
 
         <!-- 列表item内容，将视频的url做为id绑定，在js文件中获取这个key键对值 -->
-        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}" style="width:100%;">
+        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}" style="width:100%;" bindplay="startPlay">
         </video>
         <view style="margin: 13px;">
           <text class="tab_title">{{item.title}}</text>
@@ -105,10 +105,10 @@
       <!-- 顶部结束 -->
 
       <!-- 列表item -->
-      <view class="lll" wx:for="{{Listdobe}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
+       <view class="lll" wx:for="{{Listdobe}}" wx:for-item="item" bindtap="bindViewTap" data-title="{{item.title}}">
 
         <!-- 列表item内容，将视频的url做为id绑定，在js文件中获取这个key键对值 -->
-        <video data-id="{{item._id}}" src="{{item.video_url.vid_url}}" style="width:100%;">
+        <video id="{{item.video_url.vid_url}}" src="{{item.video_url.vid_url}}" style="width:100%;" bindplay="startPlay">
         </video>
         <view style="margin: 13px;">
           <text class="tab_title">{{item.title}}</text>
@@ -123,19 +123,23 @@
               <image style="width: 4px;height:20px;float: right;margin-right:8px;margin-top:2px;vertical-align:middle" src="../../image/more_icon.png">
               </image>
             </view>
-            <view style="float: right;width: 57px;height:25px;vertical-align:middle;float:right;margin-top: 10px;margin-bottom:20px" hover-class="viewClick" hover="true" bindtap="moreClick">
-              <span style="height:17.2px;float: right;margin-right:3px;margin-top:3px;">{{item.comment_number}}</span> 
+            <view style="float: right;width: 65px;height:25px;vertical-align:middle;float:right;margin-top: 10px;margin-bottom:20px" hover-class="viewClick" hover="true"  data-id="{{item._id}}"bindtap="commentClick">
+              <text style="height:17.2px;float: right;margin-right:3px;margin-top:3px;">{{item.comment_number}}</text>
               <image style="width: 18px;display: line-block;height:17.2px;float: right;margin-right:3px;margin-top:3px;vertical-align:middle" src="../../image/commemt_icon.png">
               </image>
             </view>
-            <view style="float: right;width: 57px;height:25px;vertical-align:middle;margin-top: 10px;margin-right:5px;float:right;" hover-class="viewClick" hover="true" bindtap="moreClick">
-              <span style="height:17.2px;float: right;margin-right:3px;margin-top:3px;">{{item.like_number}}</span> 
-              <image style="width: 18px;display: line-block;height:17.2px;float: right;margin-right:3px;margin-top:3px;vertical-align:middle" src="../../image/likes.png" data-id="{{item._id}}">
+            <view style="float: right;width: 65px;height:25px;vertical-align:middle;margin-top: 10px;margin-right:5px;float:right;"
+             hover-class="viewClick" data-id="{{item._id}}" hover="true" bindtap="likeClick">
+<!-- 以视频的id做为唯一标示 -->
+              <text style="height:17.2px;float: right;margin-right:3px;margin-top:3px">{{item.like_number}}</text>
+              <image wx:if="{{item.like}}" class="likes"
+              wx:key="{{item._id}}" style="" src="../../image/likes.png" >
+              </image>
+              <image wx:else class="likes" style="" src="../../image/likes_click.png" >
               </image>
             </view>
           </view>
         </view>
-
         <!--下方昵称那块那块 -->
       </view>
       <view class="tips1">
